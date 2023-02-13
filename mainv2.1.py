@@ -1,3 +1,8 @@
+class Investor():
+    """Class holds all investor """
+    def __init__(self, name, property):
+        self.creditial = {"Name of Company":f"{name}", "Email Address":f"{property}"}
+        # print(self.creditial)
 
 class Rinvest():
     """investor creditial blueprint"""
@@ -10,8 +15,8 @@ class Rinvest():
             u_choice = input("\nWould you like to find out your ROI on rental property? (y/n):")
 
             if (u_choice) == "y":
-                self.invest_name()
-                threw_cal = Calc()
+                # self.invest_name()
+                threw_cal = Calc(self.invest_name())
                 threw_cal.income()
             else:
                 (u_choice) == "n"
@@ -20,21 +25,18 @@ class Rinvest():
     def invest_name(self):
         """method to get inventors creditials"""
         name = input("Let's get started with your name of your company?: ").lower()
-        email = input("What's your company email address: ").lower()
+        property = input("What's the name of property: ").lower()
 
-        cred1 = Investor.creditial[name]
-        self.creditial["Name of Company"].append(cred1)
-        cred2 = Investor.creditial[email]
-        self.creditial["Email Address"].append(cred2)
+        cred1 = Investor(name, property)
+        return cred1
         
-
-
-
+        
 
 class Calc():
     """Main Class handles all calculations"""
-    def __init__(self):
-        self.main_cal = Investor(creditial="")
+    def __init__(self,name_cal):
+        self.main_cal = name_cal
+        print(self.main_cal.creditial["Name of Company"])
 
     def prop_cost(self):
         pass
@@ -86,13 +88,6 @@ class Calc():
         return return_on_invest
 
 
-class Investor():
-    """Class holds all investor """
-    def __init__(self, creditial):
-        self.creditial = {"Name of Company":[], "Email Address":[]}
-        
-
-
-
 shouldwe = Rinvest()
 shouldwe.run()
+
